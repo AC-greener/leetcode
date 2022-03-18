@@ -1,4 +1,4 @@
-var search = function(nums, target) {
+var searchInsert = function(nums, target) {
   let left = 0, right = nums.length - 1
   while(left <= right) {
     let mid = Math.floor((right - left) / 2 + left)
@@ -10,9 +10,11 @@ var search = function(nums, target) {
       right = mid -1
     }
   }
-  return -1
+  console.log('left:', left)
+  console.log('right:', right)
+  return left
 };
-search([-1,0,3,5,9,12], 9)
+searchInsert([1,3,5,6], 0)
 // 输入: nums = [-1,0,3,5,9,12], target = 9
 // 输出: 4
 // 解释: 9 出现在 nums 中并且下标为 4
