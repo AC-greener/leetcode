@@ -14,8 +14,8 @@ var reverseList = function (head) {
   while (current != null) {
     let temp = current.next
     current.next = prev
-    prev = current
-    current = temp
+    prev = current //前指针向后移动
+    current = temp //当前指针后向移动
   }
   return prev
 };
