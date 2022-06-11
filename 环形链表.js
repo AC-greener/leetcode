@@ -10,26 +10,28 @@
  * @param {ListNode} head
  * @return {boolean}
  */
- var hasCycle = function(head) {
-    const map = new Map()
-    while(head != null) {
-      if(map.has(head)) {
-        return true
-      }
-      map.set(head, true)
-      head = head.next
+var hasCycle = function (head) {
+  const map = new Map()
+  while (head != null) {
+    if (map.has(head)) {
+      return true
     }
-    return false
+    map.set(head, true)
+    head = head.next
+  }
+  return false
 };
 
-var hasCycle = function(head) {
-  if(!head || !head.next) return false
+var hasCycle = function (head) {
+  if (!head || !head.next) return false
   let slow = head
-  let fast = head.next
-  while(slow != fast) {
-    if(!fast || !fast.next) return false
+  let fast = head
+  while (fast && fast.next) {
     slow = slow.next
     fast = fast.next.next
+    if (fast === slow) {
+      return true
+    }
   }
-  return true
+  return false
 };
