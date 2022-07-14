@@ -10,7 +10,6 @@ var twoSum = function(nums, target) {
   let left = 0, right = len - 1
   nums = nums.sort((a, b) => a - b)
   while(left < right) {
-    debugger
     let sum = nums[left] + nums[right]
     let low = left, hi = right
     if(sum < target) {
@@ -25,4 +24,4 @@ var twoSum = function(nums, target) {
   }
   console.log(result)
 };
-twoSum([2,7,11,15], 9)
+twoSum([2,7,3,6,11,15], 9)
