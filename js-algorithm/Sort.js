@@ -150,7 +150,7 @@ function divide(array, left, right) {
     while (array[i] <= middleValue && i < right) {
       i++
     }
-    while (array[j] >= middleValue && j > right) {
+    while (array[j] >= middleValue && j > left) {
       j--
     }
     if (i <= j) {

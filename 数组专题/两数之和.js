@@ -40,32 +40,68 @@
 //   }
 // }
 //解法3  二分查找
-var twoSum = function(numbers, target) {
-  for(var i = 0; i < numbers.length - 1; i++) {
+var twoSum = function (numbers, target) {
+  for (var i = 0; i < numbers.length - 1; i++) {
     var index = binarySearch(target - numbers[i], numbers, i + 1)
-    if(index > 0) {
+    if (index > 0) {
       return [i + 1, index + 1]
     }
   }
 }
 function binarySearch(target, arr, left) {
   var right = arr.length - 1
-  while(left < right) {
+  while (left < right) {
     debugger
     var mid = Math.floor((left + right) / 2)
-    if(arr[mid] === target) {
+    if (arr[mid] === target) {
       return mid
-    } else if(arr[mid] > target) {
+    } else if (arr[mid] > target) {
       right = mid
     } else {
       left = mid + 1
     }
   }
-  if(arr[left] === target) {
+  if (arr[left] === target) {
     return left
   } else {
     return -1
   }
 }
-twoSum([3,24,50,79,88,150,345], 6)
+twoSum([3, 24, 50, 79, 88, 150, 345], 6)
 
+var test = {
+  a: 'jack',
+  b: {
+    c: 'sparrow',
+    d: {
+      e: 'hahaha'
+    }
+  }
+};
+
+function flat(currentNode, target, flattenedKey) {
+  for (var key in currentNode) {
+    var newKey;
+    if (flattenedKey === undefined) {
+      newKey = key;
+    } else {
+      newKey = flattenedKey + '.' + key;
+    }
+
+    var value = currentNode[key];
+    if (typeof value === "object") {
+      flat(value, target, newKey);
+    } else {
+      target[newKey] = value;
+    }
+  }
+}
+
+function flatWrapper(obj) {
+  var result = {};
+  flat(obj, result);
+  return result;
+}
+
+var flattened = JSON.stringify(flatWrapper(test));
+console.log(flattened);
