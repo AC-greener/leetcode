@@ -1,19 +1,35 @@
 var removeNthFromEnd = function(head, n) {
   if(head == null) return head;
-  let length = 0, cur = head, next = null
-  while(cur) {
+  let length = 0, dummy = new ListNode()
+  dummy.next = head
+  while(head) {
     length++
-    cur = cur.next
+    head = head.next
   }
-  if(length == 0) {
-    head = head.next;
-  } else {
-    cur = head
-    let target = length - n + 1
-    for(let i = 1; i < target - 1; i++) {
+    let i, cur = dummy
+    for(i = 1; i < length - n + 1; i++) {
       cur = cur.next
     }
     cur.next = cur.next.next
-  }
-  return head
+    console.log(cur)
+  return dummy.next
 };
+
+//双指针解法
+
+var removeNthFromEnd = function(head, n) {
+  let dummy = new ListNode()
+  dummy.next = head
+  let first = head, second = dummy
+  while(n) {
+    first = first.next
+    n--
+  }
+  while(first) {
+    first = first.next
+    second = second.next
+  }
+  second.next = second.next.next
+  console.log(second)
+  return dummy.next
+}

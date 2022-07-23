@@ -32,4 +32,29 @@ var hasCycle = function(head) {
     fast = fast.next.next
   }
   return true
+}
+var hasCycle = function (head) {
+  const map = new Map()
+  while (head != null) {
+    if (map.has(head)) {
+      return true
+    }
+    map.set(head, true)
+    head = head.next
+  }
+  return false
+};
+
+var hasCycle = function (head) {
+  if (!head || !head.next) return false
+  let slow = head
+  let fast = head
+  while (fast && fast.next) {
+    slow = slow.next
+    fast = fast.next.next
+    if (fast === slow) {
+      return true
+    }
+  }
+  return false
 };
