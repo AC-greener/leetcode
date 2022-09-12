@@ -24,3 +24,12 @@ f[i] = f[i-1] + f[i-2]
     }
     return cur
 };
+"use strict";
+let obj = {
+    name: 'a',
+    fn: function() {
+        console.log(this.a)
+    }
+}
+a = obj.fn
+a()
