@@ -9,6 +9,10 @@
  * @param {ListNode} head
  * @return {ListNode}
  */
+// 在遍历链表时，将当前节点的 next\textit{next}next 指针改为指向前一个节点。
+// 由于节点没有引用其前一个节点，因此必须事先存储其前一个节点。在更改引用之前，还需要存储后一个节点。最后返回新的头引用。
+
+
 var reverseList = function (head) {
   let prev = null, current = head
   while (current != null) {

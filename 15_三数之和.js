@@ -1,7 +1,9 @@
 
 
 
-var threeSum = function(nums, target) {
+// 给你一个整数数组 nums ，判断是否存在三元组 [nums[i], nums[j], nums[k]] 满足 i != j、i != k 且 j != k ，
+// 同时还满足 nums[i] + nums[j] + nums[k] == 0 。请
+var threeSum = function(nums) {
   var twoSum = function(nums, start, target) {
     let result = []
     let len = nums.length
