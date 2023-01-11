@@ -7,7 +7,7 @@ var addStrings = function(num1, num2) {
       const y = j >= 0 ? Number(num2.charAt(j)) : 0;
       const result = x + y + add;
       ans.push(result % 10);
-      add = Math.floor(result / 10);
+      add = Math.floor(result / 10); //进位
       i -= 1;
       j -= 1;
   }

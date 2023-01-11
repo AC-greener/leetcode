@@ -10,4 +10,5 @@ var reverseString = function(s) {
 };
 
 reverseString(["h","e","l","l","o"])
+// 0lleh
 reverseString(["H","x","b","n","a","h"])

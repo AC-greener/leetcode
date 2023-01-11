@@ -1,3 +1,4 @@
+//快指针一次走两步 慢指针一次一步，当快指针为空时，slow指向中间节点
 var middleNode = function(head) {
   let slow = fast = head
   while(fast && fast.next) {

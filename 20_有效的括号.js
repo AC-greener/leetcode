@@ -19,9 +19,9 @@ var isValid = function(s) {
 		'{': '}',
 	}
 	for(let i = 0; i < s.length; i++) {
-		if(hash[s[i]]) {
+		if(hash[s[i]]) { //遇到左括号一直进栈
 			stask.push(s[i])
-		} else {
+		} else {//遇到右括号出栈，从hash里面找是否匹配当前元素
 			if(!(hash[stask.pop()] === s[i])){
 				return false
 			}

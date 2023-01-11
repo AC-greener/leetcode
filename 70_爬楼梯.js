@@ -14,7 +14,7 @@
 f[i] = f[i-1] + f[i-2]
 */
 
-//从第一层开始爬 cur = 1
+//从第一层开始爬 cur = 1,可以理解为斐波那契数列
  var climbStairs = function(n) {
     let prev = 0, cur = 1 
     for(let i = 1; i <= n; i++) {

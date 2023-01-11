@@ -17,8 +17,8 @@
       return;
     }
     let obj = {}
-    obj = Object.create(fn)
+    obj = Object.create(fn.prototype)
     let result = fn.apply(obj, [].slice.call(arguments, 1))
-    return typeof result ==='object' || typeof result === 'function' ? result: obj
+    return result && (typeof result ==='object' || typeof result === 'function') ? result: obj
   }
 }

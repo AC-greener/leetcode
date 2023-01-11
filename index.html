@@ -9,5 +9,37 @@
 <body>
   <!-- 环形链表 -->
   <!-- <script src="./34_在数组中查找第一个和嘴和一个位置.js"></script> -->
+  <script src="./前端手写题目/扁平化对象.js"></script>
+  <!-- <script>
+   let input =  '[1, [2,7, [3]], [5], 6, 7]'
+   function parse(input) {
+    const stack = []
+    let output = []
+    for(let i = 0; i< input.length; i++) {
+      while(input[i] !== ']') {
+        debugger
+        stack.push(input[i])
+      }
+      let arr = []
+      while(stack[stack.length - 1] !== '[') {
+        debugger
+        const value = stack.pop()
+        if(value !== ',') {
+          if(!output.length) {
+            output.push(value)
+          } else {
+            arr.unshift(value)
+          }
+        }
+      }
+      debugger
+      if(output.length) {
+        arr.push(output)
+        output = arr
+      }
+    }
+    return output
+   }
+  </script> -->
 </body>
 </html>

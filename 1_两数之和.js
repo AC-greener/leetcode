@@ -20,7 +20,9 @@ var twoSum = function(nums, target) {
   let result = []
   let len = nums.length
   let left = 0, right = len - 1
-  nums = nums.sort((a, b) => a - b)
+  //先排序
+  nums = nums.sort((a, b) => a - b) 
+  //
   while(left < right) {
     let sum = nums[left] + nums[right]
     let low = left, hi = right

@@ -3,8 +3,9 @@
 
 // 给你一个整数数组 nums ，判断是否存在三元组 [nums[i], nums[j], nums[k]] 满足 i != j、i != k 且 j != k ，
 // 同时还满足 nums[i] + nums[j] + nums[k] == 0 。请
+//可以吧三数之和转换为： 两数之和， nums[i] + nums[j] = 0 - num[k]
 var threeSum = function(nums) {
-  var twoSum = function(nums, start, target) {
+  var twoSum = function(nums, start, target) { //start表示在nums中的起始索引
     let result = []
     let len = nums.length
     let left = start, right = len - 1
