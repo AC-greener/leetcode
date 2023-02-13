@@ -1,25 +1,36 @@
-//非递归，双栈
-var postorderTraversal = function (root) {
-  if (!root) return []
-  let result = []
-  let stack1 = [],
-    stack2 = []
-  stack1.push(root)
-  while (stack1.length) {
-    let current = stack1.pop()
-    stack2.push(current.val)
-    if (current.left) {
-      stack1.push(current.left)
-    }
-    if (current.right) {
-      stack1.push(current.right)
-    }
+var postorderTraversal = function(root) {
+  let res=[];
+  const dfs=function(root){
+      if(root===null){
+          return ;
+      }
+      dfs(root.left);
+      dfs(root.right);
+      res.push(root.val);
   }
-  while (stack2.length) {
-    result.push(stack2.pop())
-  }
-  return result
+  dfs(root);
+  return res;
 };
+//先序遍历是中左右，后续遍历是左右中，那么我们只需要调整一下先序遍历的代码顺序，
+// 就变成中右左的遍历顺序，然后在反转result数组，输出的结果顺序就是左右中了
+var preorderTraversal = function(root) {
+  if(!root) return []
+  let result = []
+  let stack = []
+  stack.push(root)
+  while(stack.length) {
+    let current = stack.pop()
+    result.push(current.val)
+    if(current.left) {
+      stack.push(current.left)
+    }
+    if(current.right) {
+      stack.push(current.right)
+    }
+  }
+  return result.reverse()
+};
+
 //非递归 一个栈
 var postorderTraversal = function (root) {
   if (!root) return []
@@ -40,3 +51,4 @@ var postorderTraversal = function (root) {
   }
   return result
 };
+

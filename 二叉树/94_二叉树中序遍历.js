@@ -29,6 +29,7 @@ var inorderTraversal = function (root) {
 };
 
 
+//使用栈
 var inorderTraversal = function (root) {
   let result = []
   let stack = []
