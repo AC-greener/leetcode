@@ -11,6 +11,12 @@
 链接：https://leetcode.cn/problems/valid-parentheses
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 */
+/*
+三种不匹配的情况
+第一种情况，字符串里左方向的括号多余了 ，所以不匹配。
+第二种情况，括号没有多余，但是 括号的类型没有匹配上
+第三种情况，字符串里右方向的括号多余了，所以不匹配。
+*/
 var isValid = function(s) {
 	const stask = []
 	let hash = {
@@ -27,9 +33,10 @@ var isValid = function(s) {
 			}
 		}
 	}
-	return stask.length === 0
+	return stask.length === 0 //判断情况1
 };
 isValid("([)]")
 isValid("()[]{}")
 isValid("()")
 isValid("(]")
+
