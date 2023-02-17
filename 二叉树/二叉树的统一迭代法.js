@@ -9,12 +9,50 @@ var preorderTraversal = function (root, res = []) {
   const stack = [];
   if (root) stack.push(root);
   while (stack.length) {
-    const node = stack.pop();
+    let node = stack.pop();
     if (node) {
       if (node.right) stack.push(node.right); // 右
       if (node.left) stack.push(node.left); // 左
       stack.push(node); // 中
       stack.push(null);
+    } else {// 只有遇到空节点的时候，才将下一个节点放进结果集
+      node = stack.pop()
+      res.push(node.val);
+    }
+  };
+  return res;
+};
+
+// 后序遍历：左右中
+var preorderTraversal = function (root, res = []) {
+  const stack = [];
+  if (root) stack.push(root);
+  while (stack.length) {
+    let node = stack.pop();
+    if (node) {
+      stack.push(node); // 中
+      stack.push(null);
+      if (node.left) stack.push(node.left); // 左
+      if (node.right) stack.push(node.right); // 右
+    } else {// 只有遇到空节点的时候，才将下一个节点放进结果集
+      node = stack.pop()
+      res.push(node.val);
+    }
+  };
+  return res;
+};
+
+// 中序遍历：左中右
+var inorderTraversal = function (root, res = []) {
+  const stack = [];
+  if (root) stack.push(root);
+  while (stack.length) {
+    let node = stack.pop();
+    if (node) {
+      if (node.right) stack.push(node.right); // 右
+      stack.push(node); // 中
+      stack.push(null);
+      if (node.left) stack.push(node.left); // 左
     } else {// 只有遇到空节点的时候，才将下一个节点放进结果集
       node = stack.pop()
       res.push(node.val);
