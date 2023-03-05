@@ -12,6 +12,7 @@ var binaryTreePaths = function (root) {
     if (!node.left && !node.right) {
       curPath += node.val
       res.push(curPath)
+      return;
     }
     //3. 确定单层递归逻辑
     curPath += node.val + '->'
