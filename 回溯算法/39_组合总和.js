@@ -38,3 +38,24 @@ function fn(target, candidates, resultItem, start) {
 fn(8, [2, 3, 5], resultItem, 0)
 fn(7, [2, 3, 6, 7], resultItem, 0)
 // console.log(result)
+
+var combinationSum = function(candidates, target) {
+  const result = [], resultItem = []
+  function help(candidates, target, startIndex) {
+    if(resultItem.reduce((prev, vur) => prev + vur, 0) > target) {
+      return
+    }
+    if(resultItem.reduce((prev, vur) => prev + vur, 0) === target) {
+      result.push([...resultItem])
+      return
+    }
+    for(let i = startIndex; i < candidates.length; i++) {
+      resultItem.push(candidates[i])
+      help(candidates, target, i)
+      resultItem.pop()
+    }
+  }
+  help(candidates, target, 0)
+  return result
+};
+combinationSum([2, 3, 5], 7)
