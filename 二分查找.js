@@ -16,6 +16,23 @@ const binarySearch = function (nums, target) {
   }
   return -1
 }
+var search = function(nums, target) {
+  function binarySearch(nums, left, right, target) {
+    while(left <= right) {
+      let mid = Math.floor((left + right) / 2)
+      let midValue = nums[mid]
+      if(midValue > target) {
+        right = mid - 1
+      } else if(midValue < target) {
+        left = mid + 1
+      } else {
+        return mid
+      }
+    }
+    return -1
+  }
+  return binarySearch(nums, 0, nums.length - 1, target)
+};
 
 binarySearch([1, 4, 4, 5, 7, 7, 8, 9, 9, 10], 1)
 
