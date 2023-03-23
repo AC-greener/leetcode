@@ -5,6 +5,7 @@
 // 前序遍历：中左右
 // 压栈顺序：右左中
 
+
 var preorderTraversal = function (root, res = []) {
   const stack = [];
   if (root) stack.push(root);
