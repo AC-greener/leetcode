@@ -17,8 +17,18 @@
 
 输入：digits = ""
 输出：[]
+这是一个给定数字字符串 digits，返回由它能组成的所有字母组合的函数。函数中使用了回溯算法来实现。
 
+首先定义了一个空数组 result 和一个空数组 resultItem 用于存储结果。然后定义一个哈希表 hash，其中存储了数字和字母的对应关系。
+
+接着定义了名为 helper 的内部函数，它接收两个参数：当前处理的数字字符串 digits 和已经处理完的索引号 index。在 helper 函数内部，如果 resultItem 的长度等于 digits 的长度，说明已经生成了一种字母组合，将其转化为字符串并推入到 result 数组中，然后直接返回。
+
+如果 resultItem 的长度小于 digits 的长度，则根据当前索引号 index 获取对应的字母串 letters。
+接着循环遍历 letters 中的每一个字符，并将其依次加入到 resultItem 数组中，在递归调用 helper 函数时，将索引号加一，即下一个数字字符。当递归返回时，需要将最后一个字符从 resultItem 中弹出，以便加入下一个字符。
+
+最后在主函数中调用 helper(digits, 0)，并过滤掉 result 数组中的空元素，返回结果。
 */
+
  var letterCombinations = function(digits) {
   const result = [], resultItem = []
   let hash = {

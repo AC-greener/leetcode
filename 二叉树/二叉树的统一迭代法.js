@@ -2,11 +2,10 @@
 
 // 如何标记呢，就是要处理的节点放入栈之后，紧接着放入一个空指针作为标记。 这种方法也可以叫做标记法。
 
-// 前序遍历：中左右
-// 压栈顺序：右左中
+// 前序遍历：中左右。压栈顺序：右左中
 
 
-var preorderTraversal = function (root, res = []) {
+var preorderTraversal = function (root, res = []) { //前序遍历
   const stack = [];
   if (root) stack.push(root);
   while (stack.length) {
@@ -24,7 +23,7 @@ var preorderTraversal = function (root, res = []) {
   return res;
 };
 
-// 后序遍历：左右中
+// 后序遍历：左右中。压栈顺序：中左右
 var preorderTraversal = function (root, res = []) {
   const stack = [];
   if (root) stack.push(root);
