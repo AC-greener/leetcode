@@ -5,11 +5,35 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    .b, .c {
+      height: 40px;
+      width: 40px;
+      border: 1px solid blue;
+      position: relative;
+    }
+    .a {
+      /* border: 1px solid black; */
+      display: flow-root;
+    }
+    .spacer::after {
+      display: block;
+      content: "1";
+      border: 10p solid red;
+      width: 20px;
+      height: 20px;
+      margin-bottom: 20px;
+    }
+
+  </style>
 </head>
 <body>
+<div class="a">
+  <div class="b" style="margin-bottom: 20px;"></div>
+</div>
+<div class="c"  style="margin-top: 20px;"></div>
+
   <!-- 环形链表 -->
-  <script src="./128_最长连续序列.js"></script>
-  <script src="./前端手写题目/扁平化对象.js"></script>
   <!-- <script>
    let input =  '[1, [2,7, [3]], [5], 6, 7]'
    function parse(input) {

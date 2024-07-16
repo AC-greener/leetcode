@@ -135,30 +135,40 @@ var swap = function (array, index1, index2) {
 // 快速排序是先将一个元素排好序，然后再将剩下的元素排好序。
 // 快速排序的核心无疑是 partition 函数， partition 函数的作用是在 nums[lo..hi] 中寻找一个分界点 p，
 // 通过交换元素使得 nums[lo..p-1] 都小于等于 nums[p]，且 nums[p+1..hi] 都大于 nums[p]
-function quickSort(array, left, right) {
-  if (left >= right) return
-  //index 将数组划分成较小值的数组和较大值的数组
-  let index = divide(array, left, right)
-  quickSort(array, left, index - 1)
-  quickSort(array, index + 1, right)
-}
 
-function divide(array, left, right) {
-  let middleValue = array[Math.floor((right + left) / 2)]
+function quickSort(arr, left, right) {
+  if(left >= right) return
+  const index = divide(arr, left, right)
+  quickSort(arr, left, index - 1)
+  quickSort(arr, index, right)
+  return arr
+}
+function divide(arr, left, right){
+//找一个mid，把小于arr[mid]的变量放在左边，大于arr[mid]的变量放在右边
+  const midIndex =  Math.floor((right + left) / 2)
   let i = left, j = right
-  while (i <= j) {
-    while (array[i] <= middleValue && i < right) {
+  while(i <= j) {
+    //从左往右找到大于arr[midIndex]的值
+    while(i < right && arr[i] < arr[midIndex]) {
       i++
     }
-    while (array[j] >= middleValue && j > left) {
+
+    while(j > left && arr[j] > arr[midIndex]) {
       j--
     }
-    if (i <= j) {
-      swap(array, i, j)
+    if(i <= j) {
+      [arr[i], arr[j]] = [arr[j], arr[i]]
+      i++;
+      j--;
     }
   }
-  return j
+  return i
 }
+
+
+let arr = [2, 1, 3, 4, 0]
+quickSort(arr, 0, arr.length - 1)
+console.log('quickSort(arr, 0, arr.length - 1) :>> ', quickSort(arr, 0, arr.length - 1));
 
 
 var xxx = [2, 3, 1, 0, 9, 9, 8]
