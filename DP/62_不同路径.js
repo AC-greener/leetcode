@@ -20,18 +20,40 @@
  */
 
 var uniquePaths = function (m, n) {
-  let dp = new Array(m).fill(null).map(() => new Array(n))
+  let dp = new Array(m).fill(null).map(() => new Array(n));
   for (let i = 0; i < m; i++) {
-    dp[i][0] = 1
+    dp[i][0] = 1;
   }
   for (let j = 0; j < n; j++) {
-    dp[0][j] = 1
+    dp[0][j] = 1;
   }
-  for(let i = 1; i < m; i++) {
-    for(let j = 1; j < n; j++) {
-      dp[i][j] = dp[i - 1][j] + dp[i][j - 1]
+  for (let i = 1; i < m; i++) {
+    for (let j = 1; j < n; j++) {
+      dp[i][j] = dp[i - 1][j] + dp[i][j - 1];
     }
   }
-  return dp[m-1][n-1]
+  return dp[m - 1][n - 1];
 };
-uniquePaths(3, 7)
+uniquePaths(3, 7);
+
+// 20240720 二刷
+function f(m, n) {
+  const map = [];
+  for (let i = 0; i < m; i++) {
+    map[i] = [];
+    for (let j = 0; j < n; j++) {
+      map[i].push(0);
+    }
+  }
+  map[0][0] = 1;
+  for (let i = 0; i < m; i++) {
+    for (let j = 0; j < n; j++) {
+      if (i === 0 && j === 0) {
+        continue;
+      }
+      map[i][j] = (j === 0 ? 0 : map[i][j - 1]) + (i === 0 ? 0 : map[i - 1][j]);
+    }
+  }
+  return map[m - 1][n - 1];
+}
+f(3, 7);

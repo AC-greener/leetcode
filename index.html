@@ -1,21 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <style>
-    .b, .c {
+    .b,
+    .c {
       height: 40px;
       width: 40px;
       border: 1px solid blue;
       position: relative;
     }
+
     .a {
       /* border: 1px solid black; */
       display: flow-root;
     }
+
     .spacer::after {
       display: block;
       content: "1";
@@ -24,14 +28,14 @@
       height: 20px;
       margin-bottom: 20px;
     }
-
   </style>
 </head>
+
 <body>
-<div class="a">
-  <div class="b" style="margin-bottom: 20px;"></div>
-</div>
-<div class="c"  style="margin-top: 20px;"></div>
+  <div class="a">
+    <div class="b" style="margin-bottom: 20px;"></div>
+  </div>
+  <div class="c" style="margin-top: 20px;"></div>
 
   <!-- 环形链表 -->
   <!-- <script>
@@ -65,5 +69,27 @@
     return output
    }
   </script> -->
+  <script>
+    function f(m, n) {
+      const map = []
+      for (let i = 0; i < m; i++) {
+        map[i] = []
+        for (let j = 0; j < n; j++) {
+          map[i].push(0)
+        }
+      }
+      map[0][0] = 1
+      for (let i = 0; i < m; i++) {
+        for (let j = 0; j < n; j++) {
+          if (i === 0 && j === 0) {
+            continue
+          }
+          map[i][j] = (j === 0 ? 0 : map[i][j - 1]) + (i === 0 ? 0 : map[i - 1][j])
+        }
+      }
+      return map[m - 1][n - 1]
+    }
+  </script>
 </body>
+
 </html>
