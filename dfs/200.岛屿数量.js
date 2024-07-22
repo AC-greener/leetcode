@@ -10,48 +10,41 @@
  * @return {number}
  */
 var numIslands = function (grid) {
-  if (!grid.length) return 0;
+  if (!grid || !grid.length) return 0;
+
   const m = grid.length;
   const n = grid[0].length;
-  const dir = [
-    [0, 1],
-    [1, 0],
-    [0, -1],
-    [-1, 0],
-  ];
   let result = 0;
-  const visitMap = new Array(m).fill().map(() => new Array(n).fill(0));
+  const visitMap = new Array(m).fill().map(() => new Array(n).fill(false));
+
   for (let i = 0; i < m; i++) {
     for (let j = 0; j < n; j++) {
-      if (!visitMap[i][j] && grid[i][j] !== "0") {
-        result += 1;
+      if (grid[i][j] === "1" && !visitMap[i][j]) {
+        result++;
         dfs(i, j);
       }
     }
   }
+
   function dfs(i, j) {
-    if (visitMap[i][j]) {
+    if (
+      i < 0 ||
+      i >= m ||
+      j < 0 ||
+      j >= n ||
+      grid[i][j] !== "1" ||
+      visitMap[i][j]
+    )
       return;
-    }
-    visitMap[i][j] = 1;
-    for (let k = 0; k < 4; k++) {
-      let [y, x] = dir[k];
-      const nextX = i + x;
-      const nextY = j + y;
-      if (
-        nextX >= 0 &&
-        nextX < m &&
-        nextY >= 0 &&
-        nextY < n &&
-        grid[nextX][nextY] === "1" &&
-        !visitMap[nextX][nextY]
-      ) {
-        dfs(nextX, nextY);
-      }
-    }
+
+    visitMap[i][j] = true;
+
+    dfs(i + 1, j);
+    dfs(i - 1, j);
+    dfs(i, j + 1);
+    dfs(i, j - 1);
   }
-  console.log(result);
-  console.log(visitMap);
+
   return result;
 };
 // numIslands([
