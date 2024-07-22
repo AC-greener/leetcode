@@ -70,25 +70,61 @@
    }
   </script> -->
   <script>
-    function f(m, n) {
-      const map = []
-      for (let i = 0; i < m; i++) {
-        map[i] = []
-        for (let j = 0; j < n; j++) {
-          map[i].push(0)
-        }
+    // function uniquePathsWithObstacles(obstacleGrid) {
+    //   let m = obstacleGrid.length
+    //   let n = obstacleGrid[0].length
+    //   const dp = new Array(m).fill(0).map(() => new Array(n).fill(0));
+    //   for (let i = 0; i < n && obstacleGrid[0][i] !== 1; i++) {
+    //     dp[0][i] = 1
+    //   }
+    //   for (let i = 0; i < m && obstacleGrid[i][0] !== 1; i++) {
+    //     dp[i][0] = 1
+    //   }
+    //   // debugger;
+    //   for (let i = 1; i < m; i++) {
+    //     for (let j = 1; j < n; j++) {
+    //       if (obstacleGrid[i][j] === 0) {
+    //         dp[i][j] = dp[i][j - 1] + dp[i - 1][j]
+    //       }
+    //     }
+    //   }
+    //   return dp[m - 1][n - 1]
+    // }
+    // console.log(uniquePathsWithObstacles([[0,0,0],[0,1,0],[0,0,0]]))
+
+  </script>
+  <script>
+    function _comma(number) {
+      let hasNav = false
+      sNumber = number.toString()
+      if (sNumber.includes('-')) {
+        hasNav = true;
+        sNumber = sNumber.slice(1)
       }
-      map[0][0] = 1
-      for (let i = 0; i < m; i++) {
-        for (let j = 0; j < n; j++) {
-          if (i === 0 && j === 0) {
-            continue
+      const [prefix, subfix] = sNumber.split(".");
+      let subfixResult = "";
+      if (subfix) {
+        for (let i = 0; i < subfix.length; i++) {
+          if (i > 0 && i % 3 === 0) {
+            subfixResult += ",";
           }
-          map[i][j] = (j === 0 ? 0 : map[i][j - 1]) + (i === 0 ? 0 : map[i - 1][j])
+          subfixResult += subfix[i];
         }
       }
-      return map[m - 1][n - 1]
+
+      let prefixResult = "";
+      for (let i = prefix.length - 1; i >= 0; i--) {
+        if (i % 3 === 0 && i !== prefix.length - 1 && prefix.length !== 3) {
+          prefixResult = "," + prefixResult;
+        }
+        prefixResult = prefix[i] + prefixResult;
+      }
+      const result = subfix ? `${prefixResult}.${subfixResult}` : prefixResult;
+      return hasNav ? ('-' + result) : result
     }
+    console.log(_comma(1234567))
+    console.log(_comma(-123))
+    // console.log(_comma(-1234567.90))
   </script>
 </body>
 
